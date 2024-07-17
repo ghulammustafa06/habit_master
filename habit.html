@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Master - Track Habits</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="habit.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-seedling"></i> Habit Master
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="habit.html" class="active">Habits</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div class="header-stats">
+            <div class="stat-item">
+                <i class="fas fa-list"></i>
+                <span id="total-habits">0</span>
+                <p>Total Habits</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-check-circle"></i>
+                <span id="completed-today">0</span>
+                <p>Completed Today</p>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-fire"></i>
+                <span id="longest-streak">0</span>
+                <p>Longest Streak</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="habit-container">
+            <div class="habit-header">
+                <h1 class="habit-title">Your Habits</h1>
+                <div class="habit-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="total-habits">0</div>
+                        <div class="stat-label">Total Habits</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="completed-today">0</div>
+                        <div class="stat-label">Completed Today</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="longest-streak">0</div>
+                        <div class="stat-label">Longest Streak</div>
+                    </div>
+                </div>
+            </div>
+            <div id="habit-form">
+                <input type="text" id="habit-input" placeholder="Enter a new habit">
+                <button id="add-habit"><i class="fas fa-plus"></i> Add Habit</button>
+            </div>
+            <div id="habits-list"></div>
+        </div>
+    <script src="habit.js"></script>
+</body>
+
+</html>
