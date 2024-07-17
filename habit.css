@@ -69,3 +69,66 @@ body {
     border-radius: 5px;
     font-size: 1em;
 }
+
+#add-habit {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-habit:hover {
+    background-color: #27ae60;
+}
+
+.habit-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.habit-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.habit-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.habit-checkbox {
+    margin-right: 15px;
+}
+
+.habit-text {
+    flex-grow: 1;
+    font-size: 1.1em;
+}
+
+.habit-streak {
+    margin-right: 15px;
+    color: #e67e22;
+    font-weight: bold;
+}
+
+.delete-habit {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-habit:hover {
+    background-color: #c0392b;
+}
