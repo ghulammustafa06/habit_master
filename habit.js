@@ -53,3 +53,51 @@ class HabitTracker {
             icon: "fas fa-tree"
             }
         ];
+
+        this.habitInput = document.getElementById('habit-input');
+        this.addHabitButton = document.getElementById('add-habit');
+        this.habitsList = document.getElementById('habits-list');
+        this.habitSuggestions = document.getElementById('habit-suggestions');
+
+        this.addHabitButton.addEventListener('click', () => this.addHabit());
+        this.habitsList.addEventListener('change', (e) => {
+            if (e.target.type === 'checkbox') {
+                this.toggleHabit(Number(e.target.id.split('-')[1]));
+            }
+        });
+        this.habitsList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-habit') || e.target.parentElement.classList.contains('delete-habit')) {
+                const id = Number(e.target.dataset.id || e.target.parentElement.dataset.id);
+                this.deleteHabit(id);
+            }
+        });
+        this.habitSuggestions.addEventListener('click', (e) => {
+            if (e.target.classList.contains('add-suggested-habit')) {
+                const habitName = e.target.dataset.habit;
+                this.addSuggestedHabit(habitName);
+            }
+        });
+
+        this.renderHabits();
+        this.renderHabitSuggestions();
+        this.updateStats();
+    }
+
+    addHabit() {
+        const habitText = this.habitInput.value.trim();
+        if (habitText && !this.habits.some(h => h.text.toLowerCase() === habitText.toLowerCase())) {
+            const habit = {
+                id: Date.now(),
+                text: habitText,
+                completed: false,
+                streak: 0,
+                lastCompleted: null
+            };
+            this.habits.push(habit);
+            this.saveHabits();
+            this.renderHabits();
+            this.habitInput.value = '';
+        } else if (this.habits.some(h => h.text.toLowerCase() === habitText.toLowerCase())) {
+            alert('This habit already exists!');
+        }
+    }
