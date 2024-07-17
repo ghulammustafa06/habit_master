@@ -260,3 +260,96 @@ footer {
     text-align: center;
     margin-top: 140px;
 }
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    nav ul li {
+        margin-left: 0;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+        background-color: transparent;
+    }
+
+    .logo {
+        font-size: 1.2em;
+    }
+
+    .header-stats {
+        flex-direction: row;
+        font-size: 7px;
+    }
+
+    .container h1 {
+        font-size: 1.5em;
+    }
+
+    .stat-item {
+        margin-bottom: 20px;
+    }
+
+    #habit-form {
+        flex-direction: column;
+    }
+
+    #habit-input {
+        border-radius: 2px;
+        margin-bottom: 10px;
+    }
+
+    #add-habit {
+        border-radius: 5px;
+        font-size: 10px;
+
+    }
+
+    .habit {
+        flex-direction: column;
+    }
+
+    .habit label {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .habit .streak {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .quote {
+        max-width: 100%;
+        font-size: 10px;
+    }
+
+    .social-links {
+        margin-top: 20px;
+        font-size: 10px;
+    }
+
+    .social-links a {
+        margin-left: 0;
+    }
+
+    .author {
+        font-size: 10px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
