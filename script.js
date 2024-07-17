@@ -79,3 +79,53 @@ class HabitTracker {
         this.updateStats();
         this.updateProgressBar();
     }
+
+    filterHabits() {
+        switch (this.currentFilter) {
+            case 'active':
+                return this.habits.filter(habit => !habit.completed);
+            case 'completed':
+                return this.habits.filter(habit => habit.completed);
+            default:
+                return this.habits;
+        }
+    }
+
+    toggleHabit(id) {
+        const habit = this.habits.find(h => h.id === id);
+        if (habit) {
+            const today = new Date().toDateString();
+            if (habit.lastCompleted !== today) {
+                habit.completed = !habit.completed;
+                if (habit.completed) {
+                    habit.streak++;
+                    habit.lastCompleted = today;
+                } else {
+                    habit.streak = Math.max(0, habit.streak - 1);
+                }
+                this.saveHabits();
+                this.renderHabits();
+            }
+        }
+    }
+
+    deleteHabit(id) {
+        this.habits = this.habits.filter(h => h.id !== id);
+        this.saveHabits();
+        this.renderHabits();
+    }
+    
+    editHabit(id, newText) {
+        const habit = this.habits.find(h => h.id === id);
+        if (habit && newText.trim()) {
+            habit.text = newText.trim();
+            this.saveHabits();
+            this.renderHabits();
+        }
+    }
+
+    clearCompletedHabits() {
+        this.habits = this.habits.filter(habit => !habit.completed);
+        this.saveHabits();
+        this.renderHabits();
+    }
