@@ -70,3 +70,64 @@ nav ul li a:hover,
 nav ul li a.active {
     background-color: rgba(255, 255, 255, 0.2);
 }
+
+.header-stats {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item i {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.stat-item span {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+#habit-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#habit-input {
+    flex-grow: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#add-habit {
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1em;
+}
+
+#add-habit:hover {
+    background-color: var(--secondary-color);
+}
