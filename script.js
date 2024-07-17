@@ -129,3 +129,34 @@ class HabitTracker {
         this.saveHabits();
         this.renderHabits();
     }
+
+    saveHabits() {
+        localStorage.setItem('habits', JSON.stringify(this.habits));
+    }
+
+    updateStats() {
+        const totalHabits = this.habits.length;
+        const completedToday = this.habits.filter(h => h.lastCompleted === new Date().toDateString()).length;
+        const longestStreak = Math.max(...this.habits.map(h => h.streak));
+
+        this.totalHabitsSpan.textContent = totalHabits;
+        this.completedTodaySpan.textContent = completedToday;
+        this.longestStreakSpan.textContent = longestStreak;
+    }
+
+    updateProgressBar() {
+        const totalHabits = this.habits.length;
+        const completedToday = this.habits.filter(h => h.lastCompleted === new Date().toDateString()).length;
+        const progress = totalHabits > 0 ? (completedToday / totalHabits) * 100 : 0;
+        this.progressBar.style.width = `${progress}%`;
+    }
+
+    formatDate(dateString) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new HabitTracker();
+});
