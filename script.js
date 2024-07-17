@@ -41,3 +41,41 @@ class HabitTracker {
             }
         });
     }
+
+    
+    addHabit() {
+        const habitText = this.habitInput.value.trim();
+        if (habitText) {
+            const habit = {
+                id: Date.now(),
+                text: habitText,
+                completed: false,
+                streak: 0,
+                lastCompleted: null,
+                createdAt: new Date().toISOString()
+            };
+            this.habits.push(habit);
+            this.saveHabits();
+            this.renderHabits();
+            this.habitInput.value = '';
+        }
+    }
+
+    renderHabits() {
+        this.habitsList.innerHTML = '';
+        this.filterHabits().forEach(habit => {
+            const habitElement = document.createElement('div');
+            habitElement.classList.add('habit');
+            habitElement.innerHTML = `
+                <input type="checkbox" id="habit-${habit.id}" ${habit.completed ? 'checked' : ''}>
+                <label for="habit-${habit.id}">${habit.text}</label>
+                <span class="streak"><i class="fas fa-fire"></i> ${habit.streak}</span>
+                <span class="created-at">Created: ${this.formatDate(habit.createdAt)}</span>
+                <button class="edit-habit" data-id="${habit.id}"><i class="fas fa-edit"></i></button>
+                <button class="delete-habit" data-id="${habit.id}"><i class="fas fa-trash"></i></button>
+            `;
+            this.habitsList.appendChild(habitElement);
+        });
+        this.updateStats();
+        this.updateProgressBar();
+    }
