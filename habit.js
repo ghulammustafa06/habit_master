@@ -215,3 +215,33 @@ class HabitTracker {
     document.addEventListener('DOMContentLoaded', () => {
         new HabitTracker();
     });
+
+    
+    renderHabitSuggestions() {
+        this.habitSuggestions.innerHTML = '';
+        this.suggestedHabits.forEach(habit => {
+            const suggestionElement = document.createElement('div');
+            suggestionElement.classList.add('habit-suggestion');
+            suggestionElement.innerHTML = `
+                <h3><i class="${habit.icon}"></i> ${habit.name}</h3>
+                <p>${habit.description}</p>
+                <button class="add-suggested-habit" data-habit="${habit.name}">Add This Habit</button>
+            `;
+            this.habitSuggestions.appendChild(suggestionElement);
+        });
+    }
+
+    updateStats() {
+        const totalHabits = this.habits.length;
+        const completedToday = this.habits.filter(h => h.lastCompleted === new Date().toDateString()).length;
+        const longestStreak = Math.max(...this.habits.map(h => h.streak));
+
+        document.getElementById('total-habits').textContent = totalHabits;
+        document.getElementById('completed-today').textContent = completedToday;
+        document.getElementById('longest-streak').textContent = longestStreak;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new HabitTracker();
+});
