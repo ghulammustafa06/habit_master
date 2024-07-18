@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Master - Insights</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="insights.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-chart-line"></i> Habit Master Insights
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="habit.html">Habits</a></li>
+                <li><a href="insights.html" class="active">Insights</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Your Habit Insights</h1>
+        
+        <div class="insight-section">
+            <h2>Habit Completion Overview</h2>
+            <canvas id="habitCompletionChart"></canvas>
+        </div>
+
+        <div class="insight-section">
+            <h2>Streak Distribution</h2>
+            <canvas id="streakDistributionChart"></canvas>
+        </div>
+
+        <div class="insight-section">
+            <h2>Daily Completion Rate</h2>
+            <canvas id="dailyCompletionChart"></canvas>
+        </div>
+
+        <div class="insight-section">
+            <h2>Top Performing Habits</h2>
+            <ul id="topPerformingHabits"></ul>
+        </div>
+
+        <div class="insight-section">
+            <h2>Habit Statistics</h2>
+            <div id="habitStats"></div>
+        </div>
+    </div>
+
+    <script src="insights.js"></script>
+</body>
+</html>
