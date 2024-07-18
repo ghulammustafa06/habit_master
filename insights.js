@@ -83,3 +83,53 @@ class HabitInsights {
             }
         });
     }
+
+    createDailyCompletionChart() {
+        const ctx = document.getElementById('dailyCompletionChart').getContext('2d');
+        const last7Days = [...Array(7)].map((_, i) => {
+            const d = new Date();
+            d.setDate(d.getDate() - i);
+            return d.toISOString().split('T')[0];
+        }).reverse();
+
+        const completionData = last7Days.map(date => {
+            return this.habits.filter(habit => habit.lastCompleted === date).length;
+        });
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: last7Days,
+                datasets: [{
+                    label: 'Habits Completed',
+                    data: completionData,
+                    borderColor: '#2ecc71',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Habits Completed'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Daily Habit Completion'
+                    }
+                }
+            }
+        });
+    }
