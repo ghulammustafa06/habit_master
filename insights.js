@@ -40,3 +40,46 @@ class HabitInsights {
             }
         });
     }
+
+    createStreakDistributionChart() {
+        const ctx = document.getElementById('streakDistributionChart').getContext('2d');
+        const streaks = this.habits.map(habit => habit.streak);
+        const labels = [...new Set(streaks)].sort((a, b) => a - b);
+        const data = labels.map(streak => streaks.filter(s => s === streak).length);
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Number of Habits',
+                    data: data,
+                    backgroundColor: '#3498db'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Habits'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Streak Length'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Streak Distribution'
+                    }
+                }
+            }
+        });
+    }
