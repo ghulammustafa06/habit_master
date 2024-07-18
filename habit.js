@@ -103,3 +103,65 @@ class HabitTracker {
     }
 
     
+    toggleHabit(id) {
+        const habit = this.habits.find(h => h.id === id);
+        if (habit) {
+            const today = new Date().toDateString();
+            if (habit.lastCompleted !== today) {
+                habit.completed = !habit.completed;
+                if (habit.completed) {
+                    habit.streak++;
+                    habit.lastCompleted = today;
+                } else {
+                    habit.streak = Math.max(0, habit.streak - 1);
+                }
+                this.saveHabits();
+                this.renderHabits();
+            }
+        }
+    }
+
+    deleteHabit(id) {
+        this.habits = this.habits.filter(h => h.id !== id);
+        this.saveHabits();
+        this.renderHabits();
+    }
+
+    addSuggestedHabit(habitName) {
+        if (!this.habits.some(h => h.text.toLowerCase() === habitName.toLowerCase())) {
+            const habit = {
+                id: Date.now(),
+                text: habitName,
+                completed: false,
+                streak: 0,
+                lastCompleted: null
+            };
+            this.habits.push(habit);
+            this.saveHabits();
+            this.renderHabits();
+        } else {
+            alert('This habit already exists!');
+        }
+    }
+
+    saveHabits() {
+        localStorage.setItem('habits', JSON.stringify(this.habits));
+    }
+
+    renderHabits() {
+        this.habitsList.innerHTML = '';
+        this.habits.forEach(habit => {
+            const habitElement = document.createElement('div');
+            habitElement.classList.add('habit-item');
+            habitElement.innerHTML = `
+                <input type="checkbox" id="habit-${habit.id}" class="habit-checkbox" ${habit.completed ? 'checked' : ''}>
+                <label for="habit-${habit.id}" class="habit-text">${habit.text}</label>
+                <span class="habit-streak"><i class="fas fa-fire"></i> ${habit.streak}</span>
+                <button class="delete-habit" data-id="${habit.id}"><i class="fas fa-trash"></i></button>
+            `;
+            this.habitsList.appendChild(habitElement);
+        });
+        this.updateStats();
+    }
+
+    
