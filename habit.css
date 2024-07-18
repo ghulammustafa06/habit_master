@@ -132,3 +132,89 @@ body {
 .delete-habit:hover {
     background-color: #c0392b;
 }
+
+@media screen and (max-width: 768px) {
+    .habit-container {
+        padding: 15px;
+    }
+
+    .habit-title {
+        font-size: 1.5em;
+    }
+
+    .habit-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .stat-item {
+        flex-grow: 1;
+    }
+
+    .habit-item {
+        padding: 10px;
+    }
+
+    .habit-text {
+        font-size: 1em;
+    }
+
+    .habit-suggestion {
+        padding: 10px;
+    }
+
+    .habit-suggestion h3 {
+        font-size: 1.2em;
+    }
+
+    .habit-suggestion p {
+        font-size: 0.9em;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .habit-container {
+        padding: 13px;
+    }
+
+    .habit-title {
+        font-size: 1.2em;
+    }
+
+    .habit-stats {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .stat-item {
+        flex-grow: 1;
+    }
+
+    .habit-item {
+        padding: 8px;
+    }
+
+    .habit-text {
+        font-size: .8em;
+    }
+
+    .habit-suggestion {
+        padding: 7px;
+    }
+
+    .habit-suggestion h3 {
+        font-size: 1em;
+    }
+
+    .habit-suggestion p {
+        font-size: 0.7em;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
