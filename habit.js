@@ -164,4 +164,54 @@ class HabitTracker {
         this.updateStats();
     }
 
+    class HabitTracker {
+        constructor() {
+            this.initialize();
+        }
     
+        initialize() {
+            this.habits = JSON.parse(localStorage.getItem('habits')) || [];
+            this.suggestedHabits = [
+                {
+                    name: "Daily Meditation",
+                    description: "Improve focus and reduce stress with just 10 minutes of meditation each day.",
+                    icon: "fas fa-spa"
+                },
+            ];
+            this.habitInput = document.getElementById('habit-input');
+            this.addHabitButton = document.getElementById('add-habit');
+            this.habitsList = document.getElementById('habits-list');
+            this.habitSuggestions = document.getElementById('habit-suggestions');
+    
+            this.addEventListeners();
+            this.renderHabits();
+            this.renderHabitSuggestions();
+            this.updateStats();
+        }
+    
+        addEventListeners() {
+            this.addHabitButton.addEventListener('click', () => this.addHabit());
+            this.habitsList.addEventListener('change', (e) => {
+                if (e.target.type === 'checkbox') {
+                    this.toggleHabit(Number(e.target.id.split('-')[1]));
+                }
+            });
+            this.habitsList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('delete-habit') || e.target.parentElement.classList.contains('delete-habit')) {
+                    const id = Number(e.target.dataset.id || e.target.parentElement.dataset.id);
+                    this.deleteHabit(id);
+                }
+            });
+            this.habitSuggestions.addEventListener('click', (e) => {
+                if (e.target.classList.contains('add-suggested-habit')) {
+                    const habitName = e.target.dataset.habit;
+                    this.addSuggestedHabit(habitName);
+                }
+            });
+        }
+    
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        new HabitTracker();
+    });
