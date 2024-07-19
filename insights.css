@@ -144,3 +144,98 @@ canvas {
     margin: 0 auto;
     padding: 0 20px;
 }
+footer {
+    background-color: var(--footer-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 140px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    nav ul li {
+        margin-left: 10px;
+    }
+    nav ul li a {
+        padding: 5px 8px;
+    }
+    .insight-section h2 {
+        font-size: 1.5em;
+    }
+    #habitStats {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .stat-card .stat-value {
+        font-size: 1em;
+        font-weight: bold;
+        color: #3498db;
+    }
+    .insight-section {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .insight-section h2 {
+        color: #2c3e50;
+        margin-bottom: 12px;
+    }
+
+    .logo {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        flex-direction: column;
+    }
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-content > * + * {
+        margin-top: 10px;
+    }
+    .stat-card .stat-value {
+        font-size: .8em;
+        font-weight: bold;
+        color: #3498db;
+    }
+    .insight-section {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .insight-section h2 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        font-size: 1.2em;
+    }
+
+    nav ul li a {
+        padding: 5px 5px;
+    }
+
+}
