@@ -133,3 +133,52 @@ class HabitInsights {
             }
         });
     }
+
+    
+
+
+    renderTopPerformingHabits() {
+        const topHabits = this.habits
+            .sort((a, b) => b.streak - a.streak)
+            .slice(0, 5);
+
+        const topHabitsList = document.getElementById('topPerformingHabits');
+        topHabitsList.innerHTML = topHabits.map(habit => `
+            <li>
+                <span class="habit-name">${habit.text}</span>
+                <span class="habit-streak"><i class="fas fa-fire"></i> ${habit.streak}</span>
+            </li>
+        `).join('');
+    }
+
+    renderHabitStats() {
+        const statsContainer = document.getElementById('habitStats');
+        const totalHabits = this.habits.length;
+        const completedHabits = this.habits.filter(habit => habit.completed).length;
+        const avgStreak = this.habits.reduce((sum, habit) => sum + habit.streak, 0) / totalHabits || 0;
+        const longestStreak = Math.max(...this.habits.map(habit => habit.streak));
+
+        statsContainer.innerHTML = `
+            <div class="stat-card">
+                <div class="stat-value">${totalHabits}</div>
+                <div class="stat-label">Total Habits</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${completedHabits}</div>
+                <div class="stat-label">Completed Habits</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${avgStreak.toFixed(1)}</div>
+                <div class="stat-label">Average Streak</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">${longestStreak}</div>
+                <div class="stat-label">Longest Streak</div>
+            </div>
+        `;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new HabitInsights();
+});
