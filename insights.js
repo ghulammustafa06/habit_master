@@ -134,9 +134,6 @@ class HabitInsights {
         });
     }
 
-    
-
-
     renderTopPerformingHabits() {
         const topHabits = this.habits
             .sort((a, b) => b.streak - a.streak)

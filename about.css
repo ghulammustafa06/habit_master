@@ -141,3 +141,92 @@ h2 {
 .contact-button:hover {
     background-color: var(--secondary-color);
 }
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer {
+    background-color: var(--footer-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 140px;
+}
+
+@media (max-width: 1024px) {
+    .container, .footer-content {
+        padding: 20px 10px;
+    }
+    .team-member {
+        flex-basis: calc(50% - 20px);
+    }
+    nav ul li {
+        margin-left: 10px;
+    }
+    nav ul li a {
+        padding: 5px 8px;
+}
+}
+
+@media (max-width: 768px) {
+    .logo, nav ul li a {
+        font-size: 0.9em;
+    }
+    .team-member {
+        flex-basis: 100%; 
+        margin: 0 auto 30px;
+    }
+    .team-members {
+        justify-content: center;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    nav ul li a {
+        padding: 10px 20px;
+    }
+
+    .contact-button {
+        padding: 10px 30px; 
+    }
+}
+
+@media (max-width: 480px) {
+    header, .footer-content {
+        text-align: center;
+    }
+    .footer-content {
+        flex-direction: column;
+    }
+    .contact-button {
+        padding: 8px 16px; 
+    }
+    .team-member img {
+        width: 100px;
+        height: 100px;
+    }
+    .team-member h3 {
+        font-size: 1.2em;
+    }
+    .team-member p {
+        font-size: 0.9em;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    nav ul li a {
+        padding: 10px 15px;
+    }
+}
