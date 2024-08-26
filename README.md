@@ -1,4 +1,4 @@
-[![Try Out](https://github.com/ghulammustafa06/hotel_reservation_websites/blob/main/Assets/Images/repo-img.png)](https://ghulammustafa06.github.io/hotel_reservation_websites/)
+[![Try Out](https://github.com/ghulammustafa06/hotel_reservation_websites/blob/main/Assets/Images/repo-img.png)](https://ghulammustafa06.github.io/habit_master/)
 
 
 # Habit Master 🌱
